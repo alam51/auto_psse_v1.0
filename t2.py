@@ -1,6 +1,7 @@
 import psse_utils
 import pandas as pd
 import numpy as np
+import power_flow_operation
 
 P = psse_utils.InitializePsspy()
 
@@ -8,16 +9,8 @@ import psspy  # Must be imported after Initializing PSSPY, may show false error
 
 sav_path = r'D:\My Drive\my_works\PSSE\test_3_bus_line_close.sav'
 psspy.case(sav_path)
-psspy.fnsl([
-    0,  # tap adjustment flag
-    0,  # area interchange adjustment flag
-    0,  # phase shift adjustment flag
-    1,  # dc tap adjustment flag
-    1,  # switched shunt adjustment flag
-    1,  # flat start flag
-    99,  # var limit flag
-    0,  # non-divergent solution flag
-])
+
+i = power_flow_operation.fnsl()  # Perform fnsl
 print('Iteration number:%s' % psspy.iterat())
 # psspy.read(0, r"""C:\Users\hE\Downloads\IEEE 14 bus.raw""")
 # psspy.fnsl([0, 0, 0, 1, 1, 1, 99, 0])
@@ -45,9 +38,9 @@ print df.to_string()
 a = 4
 
 # open line with CB
-ierr = psspy.branch_chng(201, 302, r"""@1""", [1, P._i, P._i, P._i, P._i, P._i],
-                         [P._f, P._f, P._f, P._f, P._f, P._f, P._f, P._f, P._f, P._f, P._f, P._f, P._f,
-                          P._f, P._f])
+ierr = psspy.branch_chng(201, 302, r"""@1""", [1, P.i, P.i, P.i, P.i, P.i],
+                         [P.f, P.f, P.f, P.f, P.f, P.f, P.f, P.f, P.f, P.f, P.f, P.f, P.f,
+                          P.f, P.f])
 # ierr = psspy.save('*')  # if want to save
 """Next LF"""
 # psspy.fnsl([
