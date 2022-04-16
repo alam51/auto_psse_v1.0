@@ -12,6 +12,10 @@ pssepath.add_pssepath()
 import psspy, redirect
 
 
+def save_current_case():
+    ierr = psspy.save('*')  # if want to save
+
+
 def fnsl(tap_adjustment_flag=0,
          area_interchange_adjustment_flag=0,
          phase_shift_adjustment_flag=0,
@@ -20,6 +24,11 @@ def fnsl(tap_adjustment_flag=0,
          flat_start_flag=1,
          var_limit_flag=99,
          non_divergent_solution_flag=0):
+    """
+    var_limit_flag = 99 -> var limit is applied after 99th iteration,
+                   = 0 -> var limit is applied Immediately (from 0th Iteration)
+                   = -1 -> var limit is Never Applied
+    """
     return psspy.fnsl([
         tap_adjustment_flag,
         area_interchange_adjustment_flag,
