@@ -33,4 +33,4 @@ class InitializePsspy:
         self.s = psspy.getdefaultchar()  # in place of default string values (not filenames) the variable s is used.
 
         redirect.psse2py()
-        psspy.psseinit(10000)  # starting bus size of 100
+        psspy.psseinit(50000)  # starting bus size of 50,000

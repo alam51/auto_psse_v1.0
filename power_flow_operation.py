@@ -1,10 +1,13 @@
-import os
-import sys
+# import os
+# import sys
+#
+# psse_path=r'C:\Program Files (x86)\PTI\PSSE33\PSSBIN'
+# sys.path.append(psse_path)
+# os.environ['PATH'] += ';' + psse_path
 
-psse_path=r'C:\Program Files (x86)\PTI\PSSE33\PSSBIN'
-sys.path.append(psse_path)
-os.environ['PATH'] += ';' + psse_path
+import pssepath
 
+pssepath.add_pssepath()
 """Importing from PSSE path"""
 import psspy, redirect
 
