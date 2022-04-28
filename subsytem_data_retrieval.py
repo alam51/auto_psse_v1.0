@@ -51,9 +51,9 @@ class Branch:
         b = 3
 
         self.df = pd.DataFrame.from_records({
-            'FROM_BUS_No': from_bus_no_list[0],
+            'FROM_BUS_No': [float(i) for i in from_bus_no_list[0]],
             'FROM_BUS_Name': from_bus_name_list[0],
-            'TO_BUS_No': to_bus_no_list[0],
+            'TO_BUS_No': [float(i) for i in to_bus_no_list[0]],
             'TO_BUS_Name': to_bus_name_list[0],
             'ID': branch_id[0],
             'AMPS': amps[0],
@@ -65,4 +65,5 @@ class Branch:
             'P_Loss': p_loss[0],
             'Q_Loss': q_loss[0],
         })
+        a = 5
         # self.df.loc[:, 'Angle(degree)'] = [np.angle(z, deg=True) for z in self.df.loc[:, 'Voltage Phasor']]
