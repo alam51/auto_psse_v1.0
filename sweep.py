@@ -23,10 +23,11 @@ def load_sweep(load_bus_no, start_load_mva, end_load_mva, interval=1, pf=.9):
         i = power_flow_operation.fnsl()  # Perform fnsl
         print('Iteration number:%s' % psspy.iterat())
         # bus_df = subsytem_data_retrieval.Bus().df
-        branch_df = subsytem_data_retrieval.Branch().df
-        branch_loss = branch_df[branch_df['FROM_BUS_No'] == load_bus_no].loc[:, 'P_Loss']
-        output_df.loc[load_mva, 'p_loss'] = float(branch_loss.values[0])
-        a = 0
+        if not i:
+            branch_df = subsytem_data_retrieval.Branch().df
+            branch_loss = branch_df[branch_df['FROM_BUS_No'] == load_bus_no].loc[:, 'P_Loss']
+            output_df.loc[load_mva, 'p_loss'] = float(branch_loss.values[0])
+            a = 0
     return output_df
 
 

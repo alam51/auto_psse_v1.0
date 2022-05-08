@@ -30,6 +30,7 @@ print bus_df.to_string()
 print branch_df.to_string()
 b = 4
 
-df = sweep.load_sweep(load_bus_no=401, start_load_mva=194, end_load_mva=201, interval=1, pf=.9)
+df = sweep.load_sweep(load_bus_no=401, start_load_mva=1, end_load_mva=319, interval=1, pf=.9)
 df.to_excel('op.xlsx')
+print('saved in' + 'op.xlsx')
 a = 7
